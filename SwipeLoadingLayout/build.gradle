@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def file = new File("${rootDir.parent}/maven_publish.gradle")
+if (file.exists()) {
+    apply from: file.absolutePath
+
+    publishModule {
+        groupId 'com.dreamgyf.android.ui.widget'
+        moduleName 'SwipeLoadingLayout'
+        version '1.1'
+        description '方便好用的无侵入式下拉刷新、上拉加载控件，支持滑动到最底部提示没有更多数据'
+        url 'https://github.com/dreamgyf/AndroidLibraries/tree/master/SwipeLoadingLayout'
+    }
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'com.google.android.material:material:1.6.1'
+
+    api 'com.dreamgyf.android.utils:Utils:0.1'
+}
