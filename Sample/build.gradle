@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk configs.android.compileSdk
 
     defaultConfig {
         applicationId "com.dreamgyf.android.ui.widget.swipe"
-        minSdk 21
-        targetSdk 32
+        minSdk configs.android.minSdk
+        targetSdk configs.android.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -32,10 +32,10 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.android.material
 
-    implementation 'com.dreamgyf.android.ui.widget:SwipeLoadingLayout:1.1'
-    implementation 'com.dreamgyf.android.ui:SpaceItemDecoration:1.0'
+    implementation libs.dreamgyf.SpaceItemDecoration
+    implementation libs.dreamgyf.SwipeLoadingLayout
 }

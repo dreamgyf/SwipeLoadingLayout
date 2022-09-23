@@ -5,11 +5,23 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+if (!file("../libs.toml").exists()) {
+    throw new GradleException(
+            "Could not found file \"../libs.toml\", " +
+                    "please clone parent project https://github.com/dreamgyf/AndroidLibraries"
+    )
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+    }
+    versionCatalogs {
+        libs {
+            from(files("../libs.toml"))
+        }
     }
 }
 rootProject.name = "SwipeLoadingLayout"
